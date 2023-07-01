@@ -1,0 +1,1 @@
+https://github.com/jassics/awesome-aws-security

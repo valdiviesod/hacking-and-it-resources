@@ -1,0 +1,1 @@
+https://github.com/xalgord/Massive-Web-Application-Penetration-Testing-Bug-Bounty-Notes
