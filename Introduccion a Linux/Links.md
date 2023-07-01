@@ -19,3 +19,11 @@ http://www.etl.it.uc3m.es/Linux_Capabilities
 https://www.compuhoy.com/que-es-bashrc-en-linux/
 https://respontodo.com/que-es-zsh-y-por-que-deberia-usarlo-en-lugar-de-bash/
 https://www.hostinger.es/tutoriales/como-usar-comando-find-locate-en-linux/
+https://en.wikipedia.org/wiki/List_of_file_signatures
+https://www.ionos.es/digitalguide/servidores/configuracion/comando-linux-find/
+https://www.shortcutfoo.com/app/dojos/awk/cheatsheet
+https://bl831.als.lbl.gov/~gmeigs/scripting_help/awk_cheat_sheet.pdf
+https://bencane.com/2012/10/22/cheat-sheet-cutting-text-with-cut/
+https://www.ibidemgroup.com/edu/tutorial-sort-linux-unix/
+https://victorhckinthefreeworld.com/2021/10/21/el-comando-uniq-de-gnu/
+https://www.unomaha.edu/college-of-information-science-and-technology/computer-science-learning-center/_files/resources/CSLC-Helpdocs-Vim.pdf

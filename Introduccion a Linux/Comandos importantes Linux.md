@@ -39,6 +39,13 @@
 - grep -r "\w" -> Filtrar por palabras
 - rev -> Reverse a cadenas
 - sshpass -p 'contraseña' ssh comando -> Acceder a ssh con la contraseña ingresada previamente
+- makepkg -C -> Eliminar los paquetes del pkgbuild 
+- base64 -w 0 -> Ejecuta base64 todo en una misma linea
+- xxd -> Ver datos en hexadecimal
+- echo "hola" | tee file -> Muestra la salida de un comando y la almacena en un archivo
+- sponge -> Sobreescribe mi archivo con la salida que desee 
+- echo $? -> Ver codigo de estado del comando previamente ejecutado
+
 
 
 
