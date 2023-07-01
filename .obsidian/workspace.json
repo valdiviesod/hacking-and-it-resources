@@ -11,11 +11,28 @@
             "id": "eae21f7237058eea",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Introduccion a Linux/Comandos importantes Linux.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "56cccdbac52640ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "OverTheWire Machines/Bandit.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -44,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Password",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -81,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "OverTheWire Machines/Bandit.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "OverTheWire Machines/Bandit.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,14 +137,25 @@
             "type": "leaf",
             "state": {
               "type": "outline",
+              "state": {
+                "file": "OverTheWire Machines/Bandit.md"
+              }
+            }
+          },
+          {
+            "id": "c972f1a4558b8fa6",
+            "type": "leaf",
+            "state": {
+              "type": "side-panel-control-view",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 305.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -135,9 +165,24 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "eae21f7237058eea",
-  "lastOpenFiles": []
+  "active": "56cccdbac52640ee",
+  "lastOpenFiles": [
+    "Introduccion a Linux/Comandos importantes Linux.md",
+    "OverTheWire Machines/Bandit.md",
+    "Introduccion a Linux/Bash scripting.md",
+    "OverTheWire Machines",
+    "Introduccion a Linux/Notas importantes.md",
+    "BashScripts/primerScript.sh",
+    "Bash Scripting/BashNotesForProfessionals (1).pdf",
+    "Bash Scripting",
+    "BashScripts",
+    "Introduccion a Linux/Busquedas a nivel sistema (find).md",
+    "Personalizando Parrot con Bspwm/Paso a paso.md",
+    "Recursos/Guias para certificados.md",
+    "Introduccion a Linux/Cuestionarios.md"
+  ]
 }

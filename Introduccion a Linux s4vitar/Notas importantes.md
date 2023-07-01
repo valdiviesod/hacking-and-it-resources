@@ -1,2 +1,0 @@
--  **cat /etc/login.defs | grep "ENCRYPT_METHOD"**
-- 

@@ -25,8 +25,20 @@
 - useradd pepe -s /bin/bash -d /home/pepe -> Forma recomendada de crear usuarios
 - xargs comando -> Con el output dado, ejecuta el comando que quiera, normalmente se concatena junto al output (which python3.9 | xargs -ls -l)
 - ls -a -> Listar archivos ocultos
-- find /ruta/de/directorio -name "*whatsapp*" -type f -> Ejemplo de **find**
-- 
+- find /ruta/de/directorio -name "*whatsapp*" -type f | xargs lsd -l -> Ejemplo de **find** (Añade un plus para listar)
+- tail -n 1 -> Ultima linea
+- awk 'NR= =2' -> Ultima linea tambien (doble igual pegado)
+- awk '{print $2}' -> Mostrar segundo argumento del comando dado
+- FS ='/' -> Delimitador
+- cut -d '/' -f 1 -> Delimitador pero qudandome con el primer campo
+- tr '/' ' ' -> Convertir barras a espacios
+- **cat /etc/login.defs | grep "ENCRYPT_METHOD"**
+- echo -e -> Interpreta caracteres especiales
+- bash -> Para ejecutar scripts sin permisos -x 
+- echo $TERM -> Ver terminal
+- grep -r "\w" -> Filtrar por palabras
+- rev -> Reverse a cadenas
+- sshpass -p 'contraseña' ssh comando -> Acceder a ssh con la contraseña ingresada previamente
 
 
 
