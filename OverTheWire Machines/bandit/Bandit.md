@@ -101,6 +101,31 @@ alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 alias rot5="tr '0-9' '5-90-4'
 ```
 ## Level 12 - 13
+wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw #Flag12 
+
+## Level 13 - 14
 ``` 
+  666   scp -r -P 2220 bandit13@bandit.labs.overthewire.org:/home/bandit13/sshkey.private ~/hacking-and-it-path/OverTheWire\ Machines/bandit
+  667  chmod 600 sshkey.private
+  668  ssh -i sshkey.private -p 2220 bandit14@bandit.labs.overthewire.org
+  bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+bandit14@bandit:~$
 
 ```
+## Level 14 - 15
+``` 
+bandit14@bandit:~/.ssh$ nc localhost 30000
+fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+Correct!
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+```
+## Level 15 - 16
+``` 
+bandit15@bandit:~$ ncat --help | grep "ssl"
+bandit15@bandit:~$ ncat --ssl localhost 30001
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+Correct!
+JQttfApK4SeyHwDlI9SXGR50qclOAil1
+```
+## Level 16 - 17

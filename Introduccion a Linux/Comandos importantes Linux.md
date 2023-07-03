@@ -8,7 +8,7 @@
 - $PATH
 - /etc/shells -> Tipos de shells
 - ; -> Ejecutar dos comandos por separado en una sola salida sin importar si funciona el anterior
-- && -> Si y solo si el comando anterior se ejecuta correctamente
+- && -> Si y solo si el comando anterior se ejecuta correctamente (Codigo de estado exitoso 0) 
 - echo $? -> Ver codigo de estado del comando anterior (0 si funciona)
 - || -> Si el primero no funciona se ejecuta el segundo
 - stderr -> Se referencia con el **2** 
@@ -45,6 +45,14 @@
 - echo "hola" | tee file -> Muestra la salida de un comando y la almacena en un archivo
 - sponge -> Sobreescribe mi archivo con la salida que desee 
 - echo $? -> Ver codigo de estado del comando previamente ejecutado
+- netstat -nat _ Listar puertos
+- ss -nltp -> ''
+- cat /proc/net/tcp -> ''
+- sudo lsof -i:puerto -> Monitorear puerto
+- ps PID/Proceso -> Monitorear proceso
+- /dev/tcp/IP/Puerto -> Contiene la informacion del puerto que se encuentre abierto 
+- & -> Hilo (No espera que se ejecute el anterior para ejecutar el comando siguiente)
+- timeout Tiempo -> Tiempo de vida maximo 
 
 
 
