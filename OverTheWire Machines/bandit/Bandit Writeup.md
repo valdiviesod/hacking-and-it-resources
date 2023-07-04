@@ -7,7 +7,8 @@ https://overthewire.org/wargames/bandit/
 Flag: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
 
 **Acceso rapido
-`sshpass -p 'aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG' ssh -p 2220 bandit3@bandit.labs.overthewire.org`
+`sshpass -p 'aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG' ssh -p 2220 bandit3@bandit.labs.overthewire.org /
+`/ssh -i sshkey.private -p 2220 bandit14@bandit.labs.overthewire.org (La key debe tener permisos 600)` 
 
 
 ## Level 1 - 2
@@ -129,3 +130,7 @@ Correct!
 JQttfApK4SeyHwDlI9SXGR50qclOAil1
 ```
 ## Level 16 - 17
+/tmp/tmp.Yy0pc5aZ4o
+(`nmap --open -T5 -n -n -p 31000-32000 127.0.0.1 /
+`nmap -p <puertos> --script ssl-enum-ciphers <dirección-IP>
+`ncat --ssl 127.0.0.1 31790)
