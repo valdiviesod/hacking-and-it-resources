@@ -1,0 +1,1 @@
+Binary Exploitation Linux : [https://gtfobins.github.io](https://t.co/iM3XRS5Ymz) Window : [https://lolbas-project.github.io/#](https://t.co/qxwWael01i) Active-directory : [https://wadcoms.github.io](https://t.co/Ai0liX0Aqk)

@@ -27,3 +27,6 @@ https://bencane.com/2012/10/22/cheat-sheet-cutting-text-with-cut/
 https://www.ibidemgroup.com/edu/tutorial-sort-linux-unix/
 https://victorhckinthefreeworld.com/2021/10/21/el-comando-uniq-de-gnu/
 https://www.unomaha.edu/college-of-information-science-and-technology/computer-science-learning-center/_files/resources/CSLC-Helpdocs-Vim.pdf
+https://blog.desdelinux.net/usando-netcat-algunos-comandos-practicos/
+https://blog.desdelinux.net/cron-crontab-explicados/
+https://www.site24x7.com/es/tools/crontab/cron-generator.html

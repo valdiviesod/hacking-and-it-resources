@@ -1,0 +1,1 @@
+ZAP — [https://owasp.org/index.php/OWASP](https://t.co/G4akNAP8oI)... DIRB — [https://tools.kali.org/web-applicatio](https://t.co/QrDaXLXymh)... NIKTO — [https://hackertarget.com/nikto-websit](https://t.co/3XU7XmaETL)... [https://portswigger.net/web-security/learning-path](https://t.co/aw0SZkQ1jp)

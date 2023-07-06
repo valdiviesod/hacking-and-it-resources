@@ -53,6 +53,7 @@
 - /dev/tcp/IP/Puerto -> Contiene la informacion del puerto que se encuentre abierto 
 - & -> Hilo (No espera que se ejecute el anterior para ejecutar el comando siguiente)
 - timeout Tiempo -> Tiempo de vida maximo 
+- env -> Ver variables de entorno
 
 
 

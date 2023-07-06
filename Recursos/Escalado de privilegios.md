@@ -1,0 +1,2 @@
+[  
+https://github.com/pentestmonkey/wind…](https://t.co/7xQjJpdPo7)... [http://securitysift.com/download/](https://t.co/veiKmGklcU)... [https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/ansible-playbook-privilege-escalation/…](https://t.co/69Rzjk4w7i)
