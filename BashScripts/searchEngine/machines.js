@@ -10853,7 +10853,8 @@
                             stiffness: 100,
                             damping: 10,
                             duration: e
-                        }; {
+                        };
+                        {
                             const t = Math.pow(s, 2) * r;
                             return {
                                 stiffness: t,

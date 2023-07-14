@@ -31,15 +31,11 @@ helpPanel ()
   Parametros que recibe el script:
   ${yellowColour} -h ${endColour} para abrir el panel de ayuda 
   ${yellowColour} -m ${endColour}${greenColour} nombre de la maquina ${endColour} para buscar una maquina por nombre 
-  ${yellowColour} -u ${endColour} para actualizar la lista de maquinas" 
+  ${yellowColour} -o ${endColour}${greenColour} sistema operativo ${endColour} para buscar una maquina segun su sistema operativo 
+  ${yellowColour} -d ${endColour}${greenColour} dificultad ${endColour} para buscar una maquina segun su dificultad 
+  ${yellowColour} -u ${endColour} para actualizar la lista de maquinas 
+  ${greenColour} Puedes mezclar los parametros ${endColour}${yellowColour}-o -d${endColour}${greenColour} para buscar por sistema operativo y dificultad ${endColour}"
   
-  
-}
-
-searchMachine ()
-{
-  machine="$1"
-  echo "[*] test de busqueda para la maquina $machine"
 }
 
 machinesUrl="https://htbmachines.github.io/bundle.js"
@@ -57,7 +53,9 @@ updateMachines()
 
 updateEngine ()
 {
-if [[ ! -f machines.js ]]; then    
+  echo -e "${yellowColour}[+] Comprobando si hay actualizaciones..."
+
+  if [[ ! -f machines.js ]]; then      
   updateMachines
 else
   curl -s -X GET $machinesUrl | js-beautify > .machinestmp.js  
@@ -65,7 +63,8 @@ else
   md5def="$(md5sum machines.js | awk '{print $1}')"
 
   if [[ "$md5def" == "$md5temp" ]]; then 
-  echo -e "\n${greenColour}[*] El archivo machines.js ya existe y esta actualizado...Saliendo..."
+  echo -e "\n${greenColour}[*] No hay actualizaciones...Saliendo..."
+  rm .machinestmp.js
   tput cnorm
   exit 0 
   else
@@ -74,16 +73,77 @@ else
 fi
 }
 
+searchMachine ()
+{
+  machine="$1"
+  machineChecker="$(cat machines.js | awk "/name: \"$machine\"/,/youtube:/" | grep -vE "id:|sku:" | tr -d '"' | tr -d ',' | sed 's/^ *//')"
+  if [[ $machineChecker ]]; then
+    echo -e "${yellowColour}[+] Propiedades de la maquina $machine:${endColour}"
+    cat machines.js | awk "/name: \"$machine\"/,/youtube:/" | grep -vE "id:|sku:" | tr -d '"' | tr -d ',' | sed 's/^ *//'
+    else
+      echo -e "${redColour}[!]La maquina que buscas no existe o esta mal escrita... "
+  fi
+}
+
+searchOs ()
+{
+  os="$1"
+  osChecker=$(cat machines.js | grep "so: \"$os\"" -B 4 | grep -vE "id:|sku:|so:|resuelta:|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//')
+  if [[ $osChecker ]]; then
+    echo -e "${yellowColour}[+] Filtrando las maquinas basadas en $os:${endColour}"
+    cat machines.js | grep "so: \"$os\"" -B 4 | grep -vE "id:|sku:|so:|resuelta:|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//'
+  else
+    echo -e "${redColour}[!]El sistema operativo que buscas no existe o esta mal escrito... "
+  fi
+
+}
+
+searchDif ()
+{
+  dif="$1"
+  difChecker=$(cat machines.js | grep "dificultad: \"$dif\"" -B 5 | grep -vE "id:|sku:|so:|dificultad:|resuelta|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//')
+  if [[ $difChecker ]]; then
+    echo -e "${yellowColour}[+] Filtrando por la dificultad $dif:${endColour}"
+    cat machines.js | grep "dificultad: \"$dif\"" -B 5 | grep -vE "id:|sku:|so:|dificultad:|resuelta|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' 
+  else
+    echo -e "${redColour}[!]La dificultad que buscas no existe o esta mal escrita... "
+  fi
+
+}
+
+osDif ()
+{
+  os="$1"
+  dif="$2"
+  osDifChecker=$(cat machines.js | grep "so: \"$os\"" -C 4 | grep "dificultad: \"$dif\"" -B 5 |grep -vE "id:|sku:|resuelta|dificultad|so|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//')
+  if [[ $osDifChecker ]]; then
+    echo -e "${yellowColour}[+] Filtrando por la dificultad $dif y el sistema operativo $os ${endColour}"
+    cat machines.js | grep "so: \"$os\"" -C 4 | grep "dificultad: \"$dif\"" -B 5 |grep -vE "id:|sku:|resuelta|dificultad|so|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//'
+    
+  else
+    echo -e "${redColour}[!]La busqueda no existe o esta mal escrita... "
+  fi
+
+}
+
 #Indicadores
 declare -i parameterCounter=0
 
+#Compañeros
+declare -i compaOs=0
+declare -i compaDif=0
+
 #: -> para recibir argumentos
 #OPTARG -> recibir el argumento
-while getopts "m:hu" arg; do
+while getopts "m:ho:ud:" arg; do
   case "$arg" in
     m) machine=$OPTARG; let parameterCounter+=1
     ;;
     u) let parameterCounter+=2
+    ;;
+    o) os=$OPTARG; compaOs=1; let parameterCounter+=3
+    ;; 
+    d) dif=$OPTARG; compaDif=1; let parameterCounter+=4
     ;;  
     h) #No se llama a helpPanel porque mostraria dos veces el panel al estar tambien llamado en el if de abajo
     ;;
@@ -99,6 +159,12 @@ if [[ $parameterCounter -eq 1 ]]; then
   searchMachine $machine
 elif [[ $parameterCounter -eq 2 ]]; then
   updateEngine
+elif [[ $parameterCounter -eq 3 ]]; then
+  searchOs $os
+elif [[ $parameterCounter -eq 4 ]]; then
+  searchDif $dif
+elif [[ $compaOs -eq 1  ]] && [[ $compaDif -eq 1 ]]; then
+  osDif $os $dif
 else
   helpPanel
 fi
