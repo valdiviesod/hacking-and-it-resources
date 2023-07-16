@@ -46,11 +46,11 @@ martingala ()
   backupApuesta=$apuesta
 
   while true; do
+    echo -e "\nApostaste ${yellowColour}$apuesta${endColour} y tienes ${yellowColour}$money${endColour}"
     random="$(($RANDOM % 37))"
     echo -e "[*] La bola ha caído en el numero ${yellowColour}$random${endColour}"
     perdida=$(($apuesta*2))
     beneficio=$(($apuesta*2))
-
 
     if [[ $par_impar=="par"  ]]; then      
       if [[ $((random % 2 )) -eq 0 ]]; then
@@ -59,6 +59,7 @@ martingala ()
           echo -e "[-] Perdiste ${greenColour}$perdida${endColour}"
           money=$(($money-$perdida))
           echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+          apuesta=$(($apuesta*2))
 
         else
            echo -e "[+]${greenColour} El numero es par... ¡Ganas!${endColour}"
@@ -71,11 +72,17 @@ martingala ()
          echo -e "[-] Perdiste ${greenColour}$perdida${endColour}"
          money=$(($money-$perdida))
          echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-
+         apuesta=$(($apuesta*2))
       fi
   fi
 
-  sleep 5
+  if [[ $money -le 0 ]]; then
+    echo -e "${redColour}[!] Perdiste todo... ¡Ludópata!"
+    ctrl_c
+    
+  fi
+
+  sleep 3
     
   done
 
