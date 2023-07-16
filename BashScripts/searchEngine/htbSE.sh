@@ -32,10 +32,12 @@ helpPanel ()
   ${yellowColour} -h ${endColour} para abrir el panel de ayuda 
   ${yellowColour} -m ${endColour}${greenColour} nombre de la maquina ${endColour} para buscar una maquina por nombre 
   ${yellowColour} -o ${endColour}${greenColour} sistema operativo ${endColour} para buscar una maquina segun su sistema operativo 
-  ${yellowColour} -d ${endColour}${greenColour} dificultad ${endColour} para buscar una maquina segun su dificultad 
+  ${yellowColour} -s ${endColour}${greenColour} skill ${endColour} para buscar una maquina por la skill que desarrolla 
+  ${yellowColour} -d ${endColour}${greenColour} dificultad ${endColour} para buscar una maquina segun su dificultad (Fácil, Media, Difícil o Insane)
   ${yellowColour} -u ${endColour} para actualizar la lista de maquinas 
-  ${greenColour} Puedes mezclar los parametros ${endColour}${yellowColour}-o -d${endColour}${greenColour} para buscar por sistema operativo y dificultad ${endColour}"
-  
+  ${greenColour} Puedes mezclar los parametros ${endColour}${yellowColour}-o -d${endColour}${greenColour} para buscar por sistema operativo y dificultad ${endColour}
+  ${greenColour} Si necesita entrar una skill de mas de una palabra insertela entre comillas dobles ${endColour}"
+
 }
 
 machinesUrl="https://htbmachines.github.io/bundle.js"
@@ -79,7 +81,7 @@ searchMachine ()
   machineChecker="$(cat machines.js | awk "/name: \"$machine\"/,/youtube:/" | grep -vE "id:|sku:" | tr -d '"' | tr -d ',' | sed 's/^ *//')"
   if [[ $machineChecker ]]; then
     echo -e "${yellowColour}[+] Propiedades de la maquina $machine:${endColour}"
-    cat machines.js | awk "/name: \"$machine\"/,/youtube:/" | grep -vE "id:|sku:" | tr -d '"' | tr -d ',' | sed 's/^ *//'
+    cat machines.js | awk "/name: \"$machine\"/,/youtube:/" | grep -vE "id:|sku:" | tr -d '"' | tr -d ',' | sed 's/^ *//' 
     else
       echo -e "${redColour}[!]La maquina que buscas no existe o esta mal escrita... "
   fi
@@ -88,10 +90,10 @@ searchMachine ()
 searchOs ()
 {
   os="$1"
-  osChecker=$(cat machines.js | grep "so: \"$os\"" -B 4 | grep -vE "id:|sku:|so:|resuelta:|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//')
+  osChecker=$(cat machines.js | grep "so: \"$os\"" -B 4 | grep -vE "id:|sku:|so:|resuelta:|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' | column)
   if [[ $osChecker ]]; then
     echo -e "${yellowColour}[+] Filtrando las maquinas basadas en $os:${endColour}"
-    cat machines.js | grep "so: \"$os\"" -B 4 | grep -vE "id:|sku:|so:|resuelta:|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//'
+    cat machines.js | grep "so: \"$os\"" -B 4 | grep -vE "id:|sku:|so:|resuelta:|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' | column
   else
     echo -e "${redColour}[!]El sistema operativo que buscas no existe o esta mal escrito... "
   fi
@@ -101,10 +103,10 @@ searchOs ()
 searchDif ()
 {
   dif="$1"
-  difChecker=$(cat machines.js | grep "dificultad: \"$dif\"" -B 5 | grep -vE "id:|sku:|so:|dificultad:|resuelta|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//')
+  difChecker=$(cat machines.js | grep "dificultad: \"$dif\"" -B 5 | grep -vE "id:|sku:|so:|dificultad:|resuelta|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//'| column)
   if [[ $difChecker ]]; then
     echo -e "${yellowColour}[+] Filtrando por la dificultad $dif:${endColour}"
-    cat machines.js | grep "dificultad: \"$dif\"" -B 5 | grep -vE "id:|sku:|so:|dificultad:|resuelta|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' 
+    cat machines.js | grep "dificultad: \"$dif\"" -B 5 | grep -vE "id:|sku:|so:|dificultad:|resuelta|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' | column
   else
     echo -e "${redColour}[!]La dificultad que buscas no existe o esta mal escrita... "
   fi
@@ -115,15 +117,31 @@ osDif ()
 {
   os="$1"
   dif="$2"
-  osDifChecker=$(cat machines.js | grep "so: \"$os\"" -C 4 | grep "dificultad: \"$dif\"" -B 5 |grep -vE "id:|sku:|resuelta|dificultad|so|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//')
+  osDifChecker=$(cat machines.js | grep "so: \"$os\"" -C 4 | grep "dificultad: \"$dif\"" -B 5 |grep -vE "id:|sku:|resuelta|dificultad|so|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' | column)
   if [[ $osDifChecker ]]; then
     echo -e "${yellowColour}[+] Filtrando por la dificultad $dif y el sistema operativo $os ${endColour}"
-    cat machines.js | grep "so: \"$os\"" -C 4 | grep "dificultad: \"$dif\"" -B 5 |grep -vE "id:|sku:|resuelta|dificultad|so|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//'
+    cat machines.js | grep "so: \"$os\"" -C 4 | grep "dificultad: \"$dif\"" -B 5 |grep -vE "id:|sku:|resuelta|dificultad|so|lf.push" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' | column
     
   else
     echo -e "${redColour}[!]La busqueda no existe o esta mal escrita... "
   fi
 
+}
+
+searchSkill ()
+{
+  
+  
+  skill="$*"
+  skillChecker=$(cat machines.js | grep "skills:" -B 6 | grep "$skill" -i -B 6| grep -E "name:|ip:" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' | column)
+  if [[ "$skillChecker" ]]; then 
+    echo -e "${yellowColour}[+] Filtrando maquinas segun la skill $skill ${endColour}"
+  cat machines.js | grep "skills:" -B 6 | grep "$skill" -i -B 6| grep -E "name:|ip:" | tr -d '"' | tr -d ',' | tr -d '-' | sed 's/^ *//' | column  
+  else
+    echo -e "${redColour}[!]La skill no existe o esta mal escrita..."
+  fi
+
+  
 }
 
 #Indicadores
@@ -135,7 +153,7 @@ declare -i compaDif=0
 
 #: -> para recibir argumentos
 #OPTARG -> recibir el argumento
-while getopts "m:ho:ud:" arg; do
+while getopts "m:ho:s:ud:" arg; do
   case "$arg" in
     m) machine=$OPTARG; let parameterCounter+=1
     ;;
@@ -144,6 +162,8 @@ while getopts "m:ho:ud:" arg; do
     o) os=$OPTARG; compaOs=1; let parameterCounter+=3
     ;; 
     d) dif=$OPTARG; compaDif=1; let parameterCounter+=4
+    ;; 
+    s) skill=$OPTARG; let parameterCounter+=5
     ;;  
     h) #No se llama a helpPanel porque mostraria dos veces el panel al estar tambien llamado en el if de abajo
     ;;
@@ -163,6 +183,8 @@ elif [[ $parameterCounter -eq 3 ]]; then
   searchOs $os
 elif [[ $parameterCounter -eq 4 ]]; then
   searchDif $dif
+elif [[ $parameterCounter -eq 5 ]]; then
+  searchSkill $skill #Para tomar la entrada con espacios completamente
 elif [[ $compaOs -eq 1  ]] && [[ $compaDif -eq 1 ]]; then
   osDif $os $dif
 else
