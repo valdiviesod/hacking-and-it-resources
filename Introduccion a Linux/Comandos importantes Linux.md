@@ -54,6 +54,8 @@
 - & -> Hilo (No espera que se ejecute el anterior para ejecutar el comando siguiente)
 - timeout Tiempo -> Tiempo de vida maximo 
 - env -> Ver variables de entorno
+- !$ -> manipular la entrada anterior
+- $((operacion)) -> Para realizar operaciones
 
 
 
