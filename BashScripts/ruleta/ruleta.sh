@@ -118,127 +118,118 @@ martingala ()
 
 }
 
-
-laubrouchereI ()
-{
+laubrouchereI() {
   echo -e "Dinero actual: ${greenColour}$dinero${endColour}"
   echo -n "[+] Juegas par o impar?: " && read par_impar
-  
+
   declare -a secuencia=(1 2 3 4)
   echo -e "[!] Comienzas con la secuencia ${yellowColour}${secuencia[@]}${endColour}"
   apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-  money=$(($dinero - $apuesta ))
+  money=$(($dinero - $apuesta))
   jugadasMalas=""
 
   #unset secuencia[0]
   #unset secuencia[-1]
 
   while true; do
-      echo -e "Apuestas ${yellowColour}$apuesta${endColour}"
-      random="$(($RANDOM % 37))"
-      echo -e "[*] La bola ha caído en el numero ${yellowColour}$random${endColour}"
-      beneficio=$(($apuesta*2))
-      perdida=$(($apuesta*2))
+    echo -e "Apuestas ${yellowColour}$apuesta${endColour}"
+    random="$(($RANDOM % 37))"
+    echo -e "[*] La bola ha caído en el numero ${yellowColour}$random${endColour}"
+    beneficio=$(($apuesta * 2))
+    perdida=$(($apuesta * 2))
 
-
-    if [[ ! $money -le 0 ]];then
-          if [[ $par_impar == "par"  ]]; then      
-            if [[ $((random % 2 )) -eq 0 ]]; then
-              if [[ $random -eq 0 ]]; then
-                echo -e "${redColour}[-] ¡Pierdes!..."
-                echo -e "[-] Perdiste ${greenColour}$perdida${endColour}"
-                money=$(($money-$perdida))
-                echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-                unset secuencia[0]
-                unset secuencia[-1]
-                secuencia=(${secuencia[@]})           
-                echo -e "[+] Nueva secuencia ${yellowColour}${secuencia[@]}${endColour}"
-                if [ ${#secuencia[@]} -ne 1 ]; then # # es para contar los elementos de la lista
-                   apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-                   elif [ ${#secuencia[@]} -eq 1 ]; then 
-                      apuesta=${secuencia[0]}
-                   else
-                     echo "Se acabaron pelao"
-                     ctrl_c
-                   fi
-
-
-
-              else
-                 echo -e "[+]${greenColour} ¡Ganas!${endColour}"
-                 money=$(($money+$beneficio))
-                 echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-                 secuencia+=($apuesta)
-                 secuencia=(${secuencia[@]})
-                 echo -e "[+] Nueva secuencia ${yellowColour}${secuencia[@]}${endColour}"
-                 if [ ${#secuencia[@]} -ne 1 ]; then # # es para contar los elementos de la lista
-                 apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-                 elif [ ${#secuencia[@]} -eq 1 ]; then 
-                    apuesta=${secuencia[0]}
-                 else
-                   echo "Se acabaron pelao"
-                   ctrl_c
-
-                 fi
-
-              fi
+    if [[ ! $money -le 0 ]]; then
+      if [[ $par_impar == "par" ]]; then
+        if [[ $((random % 2)) -eq 0 ]]; then
+          if [[ $random -eq 0 ]]; then
+            echo -e "${redColour}[-] ¡Pierdes!..."
+            echo -e "[-] Perdiste ${greenColour}$perdida${endColour}"
+            money=$(($money - $perdida))
+            echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+            unset secuencia[0]
+            unset secuencia[-1] 2>/dev/null
+            secuencia=(${secuencia[@]})
+            echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
+            if [ ${#secuencia[@]} -ne 1 ] && [ ${#secuencia[@]} -ne 0  ]; then 
+              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+            elif [ ${#secuencia[@]} -eq 1 ]; then
+              apuesta=${secuencia[0]}
             else
-               echo -e "[-]${redColour} ¡Pierdes!${endColour}"  
-               money=$(($money-$perdida))
-               echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-               unset secuencia[0]
-               unset secuencia[-1]
-               secuencia=(${secuencia[@]})   
-               echo -e "[+] Nueva secuencia ${yellowColour}${secuencia[@]}${endColour}"
-               if [ ${#secuencia[@]} -ne 1 ]; then # # es para contar los elementos de la lista
-                 apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-                 elif [ ${#secuencia[@]} -eq 1 ]; then 
-                    apuesta=${secuencia[0]}
-                 else
-                   echo "Se acabaron pelao"
-                   ctrl_c
-                 fi
-
-               jugadasMalas+="$random "
+              echo "Restableciendo secuencia..."
+              secuencia=(1 2 3 4)
+              secuencia=(${secuencia[@]})
+              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+              echo -e "Tu secuencia ahora es ${yellowColour}[${secuencia[@]}]${endColour}"
             fi
+          else
+            echo -e "[+]${greenColour} ¡Ganas!${endColour}"
+            money=$(($money + $beneficio))
+            echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+            secuencia+=($apuesta)
+            secuencia=(${secuencia[@]})
+            echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
+            if [ ${#secuencia[@]} -ne 1 ] && [ ${#secuencia[@]} -ne 0  ]; then 
+              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+            elif [ ${#secuencia[@]} -eq 1 ]; then
+              apuesta=${secuencia[0]}
+            else
+              echo "Restableciendo secuencia..."
+              secuencia=(1 2 3 4)
+              secuencia=(${secuencia[@]})
+              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+              echo -e "Tu secuencia ahora es ${yellowColour}[${secuencia[@]}]${endColour}"
+            fi
+          fi
         else
-            #Impares
-            if [[ $((random % 2 )) -eq 1 ]]; then
-              if [[ $random -eq 0 ]]; then
-                echo -e "${redColour}[-] ¡Pierdes!..."
-                money=$(($money-$perdida))
-                echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-                
-              else
-                 echo -e "[+]${greenColour} ¡Ganas!${endColour}"
-                 money=$(($money+$beneficio))
-                 echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-              fi
-            else
-               echo -e "[-]${redColour} ¡Pierdes!${endColour}"  
-               money=$(($money-$perdida))
-               echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-               jugadasMalas+="$random "
-
-            fi
-
+          echo -e "[-]${redColour} ¡Pierdes!${endColour}"
+          money=$(($money - $perdida))
+          echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+          unset secuencia[0]
+          unset secuencia[-1] 2>/dev/null
+          secuencia=(${secuencia[@]})
+          echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
+          if [ ${#secuencia[@]} -ne 1 ] && [ ${#secuencia[@]} -ne 0  ]; then 
+            apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+          elif [ ${#secuencia[@]} -eq 1 ]; then
+            apuesta=${secuencia[0]}
+          else
+            echo "Restableciendo secuencia..."
+            secuencia=(1 2 3 4)
+            secuencia=(${secuencia[@]})
+            apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+            echo -e "Tu secuencia ahora es ${yellowColour}[${secuencia[@]}]${endColour}"
+          fi
         fi
-        if [[ $money -le 0 ]]; then
-          echo -e "${redColour}[!] Perdiste todo... ¡Ludópata! 
-          Jugadas malas: $jugadasMalas"
-          
-          ctrl_c
-          
+      else
+        # Impares
+        if [[ $((random % 2)) -eq 1 ]]; then
+          if [[ $random -eq 0 ]]; then
+            echo -e "${redColour}[-] ¡Pierdes!..."
+            money=$(($money - $perdida))
+            echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+          else
+            echo -e "[+]${greenColour} ¡Ganas!${endColour}"
+            money=$(($money + $beneficio))
+            echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+          fi
+        else
+          echo -e "[-]${redColour} ¡Pierdes!${endColour}"
+          money=$(($money - $perdida))
+          echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+          jugadasMalas+="$random "
         fi
       fi
+    
+    else
+      echo -e "${redColour}[!] Perdiste todo... ¡Ludópata!
+      Jugadas malas: $jugadasMalas"
+      ctrl_c
+    fi
 
-        sleep 2
-        
-    done
+    sleep 2
+  done
+}
 
-
-
- }
 
 while getopts "d:t:l:h" arg; do
   case "$arg" in
