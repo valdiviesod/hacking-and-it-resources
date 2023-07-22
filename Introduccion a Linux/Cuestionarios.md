@@ -47,3 +47,17 @@ whoami | tail -c 8 | head -c 3
 
 whoami | tail -c 9 | head -c 3
 whoami | sed 's/s4vitar/s4v/'
+
+![[Pasted image 20230722072752.png]]
+![[Pasted image 20230722072802.png]]
+![[Pasted image 20230722072816.png]]
+![[Pasted image 20230722072903.png]]
+![[Pasted image 20230722072915.png]]
+![[Pasted image 20230722072928.png]]
+![[Pasted image 20230722072938.png]]
+![[Pasted image 20230722072948.png]]
+![[Pasted image 20230722073013.png]]
+![[Pasted image 20230722073039.png]]
+![[Pasted image 20230722073051.png]]
+![[Pasted image 20230722073102.png]]
+![[Pasted image 20230722073114.png]]

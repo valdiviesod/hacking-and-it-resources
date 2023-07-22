@@ -1,0 +1,6 @@
+- Impares
+- Tratamos de definir un marcador que nos permita en base a un tope previo máximo saber cuándo renovar nuestra secuencia, además de incrementar dicho tope para asegurar el jugar con el beneficio de la casa (esto nos permitirá maniobrar sobre un mayor número de jugadas)
+- Definimos un tope mínimo al que llegar con nuestro dinero para que, en caso de estar por debajo de este, decrementar dicho tope en 100 unidades (de esta forma nos moveremos entre objetivos razonables)
+- Hacemos una simulación entera con los topes correctamente definidos y comprobamos cómo nuestro dinero poco a poco va disminuyendo hasta quedarnos sin pasta
+- Definimos el reajuste del tope de una forma más óptima, en este caso configurándolo sólo sobre las jugadas perdidas (tiene más sentido)
+- Al igual que estas dos técnicas vistas, hay muchas más técnicas, te recomendamos que pruebes a codear otras técnicas existentes como por ejemplo la de **Fibonacci**. Todas estas técnicas están bien descritas en internet y, en base a lo aprendido, ¡deberías ser capaz de crear el resto de métodos existentes!
