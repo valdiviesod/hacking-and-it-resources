@@ -128,13 +128,10 @@ laubrouchereI() {
   money=$(($dinero - $apuesta))
   jugadasMalas=""
 
-  #unset secuencia[0]
-  #unset secuencia[-1]
-
   while true; do
     echo -e "Apuestas ${yellowColour}$apuesta${endColour}"
     random="$(($RANDOM % 37))"
-    echo -e "[*] La bola ha caído en el numero ${yellowColour}$random${endColour}"
+    echo -e "[*] La bola ha caído en el número ${yellowColour}$random${endColour}"
     beneficio=$(($apuesta * 2))
     perdida=$(($apuesta * 2))
 
@@ -146,21 +143,6 @@ laubrouchereI() {
             echo -e "[-] Perdiste ${greenColour}$perdida${endColour}"
             money=$(($money - $perdida))
             echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-            unset secuencia[0]
-            unset secuencia[-1] 2>/dev/null
-            secuencia=(${secuencia[@]})
-            echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
-            if [ ${#secuencia[@]} -ne 1 ] && [ ${#secuencia[@]} -ne 0  ]; then 
-              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-            elif [ ${#secuencia[@]} -eq 1 ]; then
-              apuesta=${secuencia[0]}
-            else
-              echo "Restableciendo secuencia..."
-              secuencia=(1 2 3 4)
-              secuencia=(${secuencia[@]})
-              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-              echo -e "Tu secuencia ahora es ${yellowColour}[${secuencia[@]}]${endColour}"
-            fi
           else
             echo -e "[+]${greenColour} ¡Ganas!${endColour}"
             money=$(($money + $beneficio))
@@ -168,61 +150,54 @@ laubrouchereI() {
             secuencia+=($apuesta)
             secuencia=(${secuencia[@]})
             echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
-            if [ ${#secuencia[@]} -ne 1 ] && [ ${#secuencia[@]} -ne 0  ]; then 
-              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-            elif [ ${#secuencia[@]} -eq 1 ]; then
-              apuesta=${secuencia[0]}
-            else
-              echo "Restableciendo secuencia..."
-              secuencia=(1 2 3 4)
-              secuencia=(${secuencia[@]})
-              apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-              echo -e "Tu secuencia ahora es ${yellowColour}[${secuencia[@]}]${endColour}"
-            fi
           fi
         else
           echo -e "[-]${redColour} ¡Pierdes!${endColour}"
           money=$(($money - $perdida))
           echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-          unset secuencia[0]
-          unset secuencia[-1] 2>/dev/null
-          secuencia=(${secuencia[@]})
-          echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
-          if [ ${#secuencia[@]} -ne 1 ] && [ ${#secuencia[@]} -ne 0  ]; then 
-            apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-          elif [ ${#secuencia[@]} -eq 1 ]; then
-            apuesta=${secuencia[0]}
-          else
-            echo "Restableciendo secuencia..."
-            secuencia=(1 2 3 4)
-            secuencia=(${secuencia[@]})
-            apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
-            echo -e "Tu secuencia ahora es ${yellowColour}[${secuencia[@]}]${endColour}"
-          fi
         fi
       else
         # Impares
         if [[ $((random % 2)) -eq 1 ]]; then
           if [[ $random -eq 0 ]]; then
             echo -e "${redColour}[-] ¡Pierdes!..."
+            echo -e "[-] Perdiste ${greenColour}$perdida${endColour}"
             money=$(($money - $perdida))
             echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
           else
             echo -e "[+]${greenColour} ¡Ganas!${endColour}"
             money=$(($money + $beneficio))
             echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
+            secuencia+=($apuesta)
+            secuencia=(${secuencia[@]})
+            echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
           fi
         else
           echo -e "[-]${redColour} ¡Pierdes!${endColour}"
           money=$(($money - $perdida))
           echo -e "[!] Saldo actual: ${yellowColour}$money${endColour}"
-          jugadasMalas+="$random "
         fi
       fi
-    
+
+      unset secuencia[0]
+      unset secuencia[-1] 2>/dev/null
+      secuencia=(${secuencia[@]})
+      echo -e "Secuencia actual: ${yellowColour}${secuencia[@]}${endColour}"
+      if [ ${#secuencia[@]} -ne 1 ] && [ ${#secuencia[@]} -ne 0  ]; then
+        apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+      elif [ ${#secuencia[@]} -eq 1 ]; then
+        apuesta=${secuencia[0]}
+      else
+        echo "Restableciendo secuencia..."
+        secuencia=(1 2 3 4)
+        secuencia=(${secuencia[@]})
+        apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+        echo -e "Tu secuencia ahora es ${yellowColour}[${secuencia[@]}]${endColour}"
+      fi
+
     else
-      echo -e "${redColour}[!] Perdiste todo... ¡Ludópata!
-      Jugadas malas: $jugadasMalas"
+      echo -e "${redColour}[!] Perdiste todo... ¡Ludópata!"
+      echo "Jugadas malas: $jugadasMalas"
       ctrl_c
     fi
 
