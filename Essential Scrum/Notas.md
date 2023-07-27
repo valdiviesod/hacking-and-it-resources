@@ -1,0 +1,3 @@
+- Al final de cada sprint se hace una reunion con los stakeholders
+- Es importante trabajar por prioridad las US
+- 
