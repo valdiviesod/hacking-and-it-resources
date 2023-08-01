@@ -1,5 +1,5 @@
-*.obsidian*
+*.obsidian
 *.json
 *key*
-*certificado*
-
+*cert*
+*.pdf
