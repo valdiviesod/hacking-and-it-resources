@@ -2,8 +2,6 @@
 *.json
 *key*
 *cert*
-*.pdf
 *incibe*
 *INCIBE*
-*.png
-*.jpg
+
