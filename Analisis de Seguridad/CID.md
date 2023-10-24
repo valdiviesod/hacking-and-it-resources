@@ -1,0 +1,15 @@
+La **tríada CID** es una guía que ayuda a las organizaciones a evaluar los riesgos y establecer sistemas y políticas de seguridad. Está compuesta por tres elementos fundamentales: confidencialidad, integridad y disponibilidad. Las/los analistas de ciberseguridad trabajan en mantener estos elementos para asegurar un nivel de riesgo aceptable. Diseñar sistemas y políticas con estos elementos en mente ayuda a establecer una **postura de seguridad** exitosa. La postura de seguridad se refiere a la capacidad que tiene una organización para gestionar la defensa de sus activos y datos críticos, así como de reaccionar ante los cambios de manera efectiva. 
+
+### **Confidencialidad**
+
+La **confidencialidad** refiere a que solo los/las usuarios/as autorizados/as pueden acceder a activos o datos específicos. En una organización, la confidencialidad puede mejorarse mediante la implementación de principios de diseño, como el principio de mínimo privilegio, que limita el acceso de las personas solo a la información que necesitan para llevar a cabo las tareas laborales. Limitar el acceso es una forma de mantener la confidencialidad y la seguridad de los datos privados. 
+
+### **Integridad**
+
+La **integridad** implica que los datos son verificables, auténticos y confiables. Es esencial contar con protocolos para verificar la autenticidad de los datos y una manera de hacerlo es mediante la [criptografía](https://www.nist.gov/cryptography#:~:text=Cryptography%20uses%20mathematical%20techniques%20to,that%20drives%20research%20and%20innovation.)
+
+, que se utiliza para transformar los datos, para que las partes no autorizadas no puedan leerlos ni manipularlos (NIST, 2022). Otro ejemplo de cómo una organización podría implementar la integridad es mediante la activación del cifrado, que es el proceso de convertir los datos de un formato legible a uno codificado. Se puede utilizar para evitar el acceso a información, como los mensajes en la plataforma de chat interna de una organización. 
+
+### **Disponibilidad**
+
+La **disponibilidad** refiere a que los datos son accesibles para aquellas personas autorizadas a usarlos. Cuando un sistema cumple tanto los principios de disponibilidad como los de confidencialidad, los datos pueden ser utilizados cuando sea necesario. En el entorno laboral, esto puede significar que la organización permite al personal que trabaja de forma remota acceder a su red interna para desempeñar sus tareas laborales. Es importante tener en cuenta que el acceso a los datos en la red interna sigue siendo limitado, según el tipo de acceso que los/las empleados/as necesiten para realizar su trabajo. Si, por ejemplo, una persona trabaja en el departamento de Contabilidad de la empresa, es posible que necesite acceso a las cuentas corporativas, pero no a los datos relacionados con proyectos que estén desarrollando en ese momento.
