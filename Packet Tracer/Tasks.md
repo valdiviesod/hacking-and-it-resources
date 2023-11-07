@@ -1,0 +1,4 @@
+- Segmentar red para 600 usuarios
+- 80 puntos de red categoría 6 con dos conexiones de 1 Giga dedicado
+- Failover
+- 12 Access Point
