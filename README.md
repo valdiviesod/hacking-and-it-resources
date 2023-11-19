@@ -1,1 +1,1 @@
-All files are actually in Spanish
+Almost all files are in Spanish
