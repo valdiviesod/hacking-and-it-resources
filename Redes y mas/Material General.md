@@ -1,5 +1,6 @@
 # Failover
 - https://www.youtube.com/watch?v=IZSDAFbIhf8
+- https://www.cisco.com/c/es_mx/support/docs/ip/ip-routing/200785-ISP-Failover-with-default-routes-using-I.html
 # Proxmox
 - https://www.youtube.com/watch?v=ql6Hesc1PSQ&list=PLKsrq85W8fy-UR6whBEhLGJGsQpwxJ5kK&index=4
 # Pfsense
@@ -21,4 +22,5 @@
 
 # APs
 - https://www.youtube.com/watch?v=skiiaRtORM8
-
+# CCNA
+https://drive.google.com/drive/folders/1KEFqi8l0YTLjtejFIheqPXvbI41Tis4j
