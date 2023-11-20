@@ -109,3 +109,6 @@ router ospf 1
 
 ## Basico
 https://www.raulprietofernandez.net/blog/packet-tracer/enrutamiento-dinamico-ospf-con-packet-tracer
+
+# Dinamico
+https://www.youtube.com/watch?v=HYFX9Iedq5Q&list=PL0tgetlSl8xWZbFK4W1T4AGZYzH5psJOL&index=8
