@@ -1,0 +1,1 @@
+- Los stubs traducen la comunicación

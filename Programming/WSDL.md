@@ -1,0 +1,1 @@
+Se genera el XML a través de la interfaz del servidor y el cliente genera su interfaz a través del XML
