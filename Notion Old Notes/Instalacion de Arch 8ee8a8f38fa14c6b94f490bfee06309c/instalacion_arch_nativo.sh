@@ -1,9 +1,9 @@
 # Conexión Inalámbrica
 
-loadkeys la-latin1
+loadkeys es
 iwctl
 device list
-station NOMBRE_DISPOSITIVO_RED scan  # El nombre sale del comando anterior
+station NOMBRE_DISPOSITIVO scan  # El nombre sale del comando anterior
 station NOMBRE_DISPOSITIVO get-networks
 station NOMBRE_DISPOSITIVO connect NOMBRE_ROUTER
 exit
@@ -38,7 +38,7 @@ nano /etc/locale.gen  # Buscar en_US.UTF-8 UTF-8 y es_ES.UTF-8 UTF-8
 locale-gen
 echo "LANG=es_ES.UTF-8" > /etc/locale.conf
 echo "KEYMAP=es" > /etc/vconsole.conf
-echo "HOSTNAME" > /etc/hostname
+echo "asus" > /etc/hostname
 nano /etc/hosts
 passwd
 pacman -S networkmanager
